@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char word_buffer[200];
+    cin >> word_buffer;
+
+    for (int i = 0; word_buffer[i] != '\0'; )
+    {
+        char target_letter = word_buffer[i];
+        int occurrence_tally = 0;
+
+        while (word_buffer[i] == target_letter)
+        {
+            occurrence_tally++;
+            i++;
+        }
+
+        cout << target_letter << occurrence_tally;
+    }
+
+    cout << endl;
+    return 0;
+}
