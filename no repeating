@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char text_buffer[300];
+
+    cout << "Enter a string: ";
+    cin.getline(text_buffer, 300);
+
+    bool char_exists[256] = {false};
+
+    int low = 0;
+    int high = 0;
+    int longest_found = 0;
+
+    while (text_buffer[high] != '\0')
+    {
+        char letter = text_buffer[high];
+
+        while (char_exists[letter] == true)
+        {
+            char duplicate = text_buffer[low];
+            char_exists[duplicate] = false;
+            low++;
+        }
+
+        char_exists[letter] = true;
+
+        int span = high - low + 1;
+        if (span > longest_found)
+        {
+            longest_found = span;
+        }
+
+        high++;
+    }
+
+    cout << "Longest length without repeating characters = " << longest_found << endl;
+
+    return 0;
+}
