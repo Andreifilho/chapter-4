@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+    char source_str[300];
+    char target_str[100];
+
+    cin.getline(source_str, 300);
+    cin.getline(target_str, 100);
+
+    int source_len = 0;
+    while (source_str[source_len] != '\0') 
+    {
+        source_len++;
+    }
+
+    int target_len = 0;
+    while (target_str[target_len] != '\0') 
+    {
+        target_len++;
+    }
+
+    int first_occurrence = -1;
+
+    for (int i = 0; i <= source_len - target_len; i++) 
+    {
+        bool found_match = true;
+
+        for (int j = 0; j < target_len; j++) 
+        {
+            if (source_str[i + j] != target_str[j]) 
+            {
+                found_match = false;
+                break;
+            }
+        }
+
+        if (found_match) 
+        {
+            first_occurrence = i;
+            break;
+        }
+    }
+
+    cout << first_occurrence << endl;
+    
+    return 0;
+}
