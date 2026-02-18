@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char text_input[300];
+    cin.getline(text_input, 300);
+
+    int max_word_pos = 0;
+    int max_word_size = 0;
+
+    int active_word_pos = 0;
+    int active_word_size = 0;
+
+    for (int k = 0; ; k++)
+    {
+        if (text_input[k] == ' ' || text_input[k] == '\0')
+        {
+            if (active_word_size > max_word_size)
+            {
+                max_word_size = active_word_size;
+                max_word_pos = active_word_pos;
+            }
+
+            if (text_input[k] == '\0')
+            {
+                break;
+            }
+
+            active_word_size = 0;
+            active_word_pos = k + 1;
+        }
+        else
+        {
+            active_word_size++;
+        }
+    }
+
+    for (int p = 0; p < max_word_size; p++)
+    {
+        cout << text_input[max_word_pos + p];
+    }
+    cout << endl;
+
+    return 0;
+}
